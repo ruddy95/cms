@@ -16,13 +16,17 @@
         <legend><?= __('Edit Sl Post') ?></legend>
         <?php
             echo $this->Form->input('post_author');
-            echo $this->Form->input('submit_date');
-            echo $this->Form->input('post_date');
+            $now = new DateTime();
+            $date = $now->format('Y-m-d H:i:s');
+            echo $this->Form->hidden('submit_date', ['value' => $date]);
+            echo $this->Form->hidden('post_date', ['value' => $date]);
             echo $this->Form->input('post_content');
             echo $this->Form->input('post_title');
             echo $this->Form->input('post_description');
             echo $this->Form->input('post_thumbnail');
-            echo $this->Form->input('post_status');
+            echo $this->Form->input('post_status', [
+              'options' => ['publish' => '公開', 'draft' => '下書き', 'TBR' => '要修正', 'pending' => '承認待ち']
+            ]);
             echo $this->Form->input('post_type');
             echo $this->Form->input('post_mime_type');
             echo $this->Form->input('post_keyword');

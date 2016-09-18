@@ -18,11 +18,10 @@
             echo $this->Form->input('post_title');
             echo $this->Form->input('post_description');
             echo $this->Form->input('post_thumbnail');
-            echo $this->Form->input('post_status');
-            echo $this->Form->input('post_type');
-            echo $this->Form->input('post_mime_type');
+            echo $this->Form->input('post_status', [
+              'options' => ['publish' => '公開', 'draft' => '下書き', 'TBR' => '要修正', 'pending' => '承認待ち']
+            ]);
             echo $this->Form->input('post_keyword');
-            echo $this->Form->hidden('post_pv');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
